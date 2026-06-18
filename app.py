@@ -60,23 +60,41 @@ def classify_image(image):
     # # max_index = np.argmax(predictions[0])
     # return predicted_class, confidence
 
+with st.sidebar:
+    st.header("Deteksi Tumor Otak Berdasarkan Citra MRI")
+    st.image("image (9).jpg", use_container_width=True)
+    menu = st.radio("Menu", ["Informasi Tumor", "Deteksi Tumor"])
 
-st.title("Klasifikasi MRI Tumor Otak")
-uploaded_file = st.file_uploader("Unggah gambar untuk klasifikasi", type=["jpg", "jpeg", "png"])
-if uploaded_file is not None:    
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Gambar yang diunggah', use_column_width=True)
+if menu == "Deteksi Tumor": 
+    st.header("Upload Citra MRI", divider="blue")
+    uploaded = st.file_uploader("Upload disini", type=["jpg", "jpeg", "png"])
+    if uploaded is not None:    
+        image = Image.open(uploaded)
+        st.image(image, caption='Gambar yang diunggah', use_column_width=True)
     
-    if st.button("Klasifikasikan"):
-        with st.spinner("Memproses..."):
-            label, confidence, probs = classify_image(image)
+        if st.button("Klasifikasikan"):
+            with st.spinner("Memproses..."):
+                label, confidence, probs = classify_image(image)
 
-            st.write("---")
-            if label == 'notumor':
-                st.success(f"Hasil Prediksi: **{label.upper()}**")
-            else:
-                st.warning(f"Hasil Prediksi: **{label.upper()}**")
+                st.write("---")
+                if label == 'notumor':
+                    st.success(f"Hasil Prediksi: **{label.upper()}**")
+                else:
+                    st.warning(f"Hasil Prediksi: **{label.upper()}**")
 
-            st.info(f"Keyakinan Model: {confidence * 100:.2f}")
-            for cls, prob in probs.items():
-                st.write(f"{cls}: {prob*100:.2f}%")
+                st.info(f"Keyakinan Model: {confidence * 100:.2f}")
+                for cls, prob in probs.items():
+                    st.write(f"{cls}: {prob*100:.2f}%")
+
+elif menu == "Informasi Tumor":
+    st.header("Jenis-Jenis Tumor Otak", divider="blue")
+
+    st.write("""
+    **Glioma**: Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.
+
+    **Meningioma**: Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.
+
+    **Notumor**: Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.
+
+    **Pituitary**: Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.
+    """)
