@@ -47,18 +47,7 @@ def classify_image(image):
     
     return predicted_class, confidence, probs
 
-    # predictions = model.predict(img_array)
-    # probability = float(predictions[0][0])
-
-    # if probability > 0.5:
-    #     predicted_class = 'kanker'
-    #     confidence = probability  
-    # else:
-    #     predicted_class = 'normal'
-    #     confidence = 1.0 - probability
-        
-    # # max_index = np.argmax(predictions[0])
-    # return predicted_class, confidence
+st.set_page_config(page_title="Identifikasi Tumor Otak", layout="wide", initial_sidebar_state="expanded")
 
 with st.sidebar:
     st.header("Deteksi Tumor Otak Berdasarkan Citra MRI")
@@ -89,12 +78,33 @@ if menu == "Deteksi Tumor":
 elif menu == "Informasi Tumor":
     st.header("Jenis-Jenis Tumor Otak", divider="blue")
 
-    st.write("""
-    **Glioma**: Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.
+    pilihan = st.segmented_control(" ", ['Glioma', 'Meningioma', 'Pituitari', 'Non-Tumor'], selection_mode="single")
 
-    **Meningioma**: Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.
+    if pilihan == "Glioma":
+        st.subheader("Glioma")
+        st.write("Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.")
+    
+    elif pilihan == "Meningioma":
+        st.subheader("Meningioma")
+        st.write("Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.")
+    
+    elif pilihan == "Non-Tumor":
+        st.subheader("Non-Tumor")
+        st.write("Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.")
 
-    **Notumor**: Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.
+    elif pilihan == "Pituitari":
+        st.subheader("Pituitari")
+        st.write("Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.")
 
-    **Pituitary**: Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.
-    """)
+# elif menu == "Informasi Tumor":
+#     st.header("Jenis-Jenis Tumor Otak", divider="blue")
+
+#     st.write("""
+#     **Glioma**: Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.
+
+#     **Meningioma**: Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.
+
+#     **Notumor**: Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.
+
+#     **Pituitary**: Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.
+#     """)
