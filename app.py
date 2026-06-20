@@ -12,7 +12,7 @@ except Exception as e:
     st.error(f"Gagal memuat model: {e}")
     st.stop()
 
-labels = ['glioma', 'meningioma', 'notumor', 'pituitary']
+labels = ['Glioma', 'Meningioma', 'Non-Tumor', 'Pituitari']
 
 def crop_image(image):
     width, height = image.size
@@ -47,14 +47,14 @@ def classify_image(image):
     
     return predicted_class, confidence, probs
 
-st.set_page_config(page_title="Identifikasi Tumor Otak", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Klasifikasi Tumor Otak", layout="wide", initial_sidebar_state="expanded")
 
 with st.sidebar:
-    st.header("Deteksi Tumor Otak Berdasarkan Citra MRI")
+    st.header("Klasifikasi Tumor Otak Berdasarkan Citra MRI")
     st.image("image (9).jpg", use_container_width=True)
-    menu = st.radio("Menu", ["Informasi Tumor", "Deteksi Tumor"])
+    menu = st.radio("Menu", ["Informasi Tumor", "Klasifikasi Tumor"])
 
-if menu == "Deteksi Tumor": 
+if menu == "Klasifikasi Tumor": 
     st.header("Upload Citra MRI", divider="blue")
     uploaded = st.file_uploader("Upload disini", type=["jpg", "jpeg", "png"])
     if uploaded is not None:    
