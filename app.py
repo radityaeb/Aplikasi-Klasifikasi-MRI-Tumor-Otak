@@ -71,7 +71,7 @@ if menu == "Klasifikasi Tumor":
                 else:
                     st.warning(f"Hasil Prediksi: **{label.upper()}**")
 
-                st.info(f"Keyakinan Model: {confidence * 100:.2f}")
+                st.info(f"Tingkat Kepercayaan: {confidence * 100:.2f}")
                 for cls, prob in probs.items():
                     st.write(f"{cls}: {prob*100:.2f}%")
 
