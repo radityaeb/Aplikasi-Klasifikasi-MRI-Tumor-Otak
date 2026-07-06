@@ -12,7 +12,7 @@ except Exception as e:
     st.error(f"Gagal memuat model: {e}")
     st.stop()
 
-labels = ['Glioma', 'Meningioma', 'Non-Tumor', 'Pituitari']
+labels = ['Glioma', 'Meningioma', 'Normal', 'Pituitari']
 
 def crop_image(image):
     width, height = image.size
@@ -78,7 +78,7 @@ if menu == "Klasifikasi Tumor":
 elif menu == "Informasi Tumor":
     st.header("Jenis-Jenis Tumor Otak", divider="blue")
 
-    pilihan = st.segmented_control(" ", ['Glioma', 'Meningioma', 'Pituitari', 'Non-Tumor'], selection_mode="single")
+    pilihan = st.segmented_control(" ", ['Glioma', 'Meningioma', 'Pituitari', 'Normal'], selection_mode="single")
 
     if pilihan == "Glioma":
         st.subheader("Glioma")
@@ -88,8 +88,8 @@ elif menu == "Informasi Tumor":
         st.subheader("Meningioma")
         st.write("Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.")
     
-    elif pilihan == "Non-Tumor":
-        st.subheader("Non-Tumor")
+    elif pilihan == "Normal":
+        st.subheader("Normal")
         st.write("Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.")
 
     elif pilihan == "Pituitari":
