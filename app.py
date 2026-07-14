@@ -59,7 +59,8 @@ if menu == "Klasifikasi Tumor":
     uploaded = st.file_uploader("Upload disini", type=["jpg", "jpeg", "png"])
     if uploaded is not None:    
         image = Image.open(uploaded)
-        st.image(image, caption='Gambar yang diunggah', width='content')
+        container = st.container(width=300)
+        container.image(image, caption='Gambar yang diunggah', width='stretch')
     
         if st.button("Klasifikasikan"):
             with st.spinner("Memproses..."):
