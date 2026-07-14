@@ -51,7 +51,7 @@ st.set_page_config(page_title="Klasifikasi Tumor Otak", layout="wide", initial_s
 
 with st.sidebar:
     st.header("Klasifikasi Tumor Otak Berdasarkan Citra MRI")
-    st.image("image (9).jpg", use_container_width=True)
+    st.image("image (9).jpg", width="stretch")
     menu = st.radio("Menu", ["Informasi Tumor", "Klasifikasi Tumor"])
 
 if menu == "Klasifikasi Tumor": 
@@ -82,29 +82,22 @@ elif menu == "Informasi Tumor":
 
     if pilihan == "Glioma":
         st.subheader("Glioma")
-        st.write("Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.")
+        st.image("glioma.jpg", width=250)
+        st.write("Glioma merupakan salah satu jenis tumor yang umum berasal dari otak, meskipun pada beberapa kasus juga dapat ditemukan pada sumsum tulang belakang. Sekitar 33% dari seluruh tumor otak merupakan glioma. Tumor ini berkembang dari sel glia, yaitu sel yang berfungsi mengelilingi dan menopang neuron. Pemahaman mengenai glioma terus berkembang seiring dengan kemajuan penelitian. Bergantung pada jenis sel pembentuk glioma serta mutasi genetik yang dimilikinya, tumor ini dapat bersifat lebih atau kurang agresif. Oleh karena itu, analisis genetik terhadap tumor sering dilakukan untuk membantu memahami karakteristik dan perilaku biologisnya. (Sumber: Johns Hopkins Medicine)")
+
     
     elif pilihan == "Meningioma":
         st.subheader("Meningioma")
-        st.write("Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.")
+        st.image("meningioma.jpg", width=250)
+        st.write("Meningioma merupakan jenis tumor otak primer yang paling umum, mencakup lebih dari 30% dari seluruh kasus tumor otak. Meningioma berasal dari meningen, yaitu tiga lapisan terluar jaringan yang menyelimuti dan melindungi otak tepat di bawah tulang tengkorak. Meningioma lebih sering didiagnosis pada wanita dibandingkan pria. Sekitar 85% kasus meningioma merupakan tumor jinak yang tumbuh secara lambat. Meskipun hampir seluruh meningioma dikategorikan sebagai tumor jinak, sebagian di antaranya dapat bersifat persisten dan berpotensi muncul kembali setelah menjalani pengobatan. (Sumber: Johns Hopkins Medicine)")
+
     
     elif pilihan == "Normal":
         st.subheader("Normal")
-        st.write("Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.")
+        st.image("normal.jpg", width=250)
+        st.write("Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Citra MRI otak normal memperlihatkan struktur otak yang simetris dengan ukuran dan bentuk yang normal, tanpa adanya pertumbuhan jaringan abnormal seperti tumor maupun kista. Selain itu, ruang cairan serebrospinal tampak bersih tanpa indikasi penyumbatan atau pembengkakan, serta tidak ditemukan area dengan intensitas sinyal yang sangat terang maupun sangat gelap yang mengindikasikan adanya kelainan.")
 
     elif pilihan == "Pituitari":
         st.subheader("Pituitari")
-        st.write("Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.")
-
-# elif menu == "Informasi Tumor":
-#     st.header("Jenis-Jenis Tumor Otak", divider="blue")
-
-#     st.write("""
-#     **Glioma**: Tumor yang berasal dari sel glial di otak. Glioma dapat bersifat jinak atau ganas, dan seringkali memerlukan perawatan intensif.
-
-#     **Meningioma**: Tumor yang berkembang dari membran meninges yang melindungi otak dan sumsum tulang belakang. Meningioma biasanya jinak, tetapi dapat menyebabkan gejala serius jika tumbuh besar.
-
-#     **Notumor**: Kategori ini menunjukkan bahwa tidak ada tumor yang terdeteksi dalam citra MRI. Ini berarti bahwa gambar tersebut kemungkinan besar normal.
-
-#     **Pituitary**: Tumor yang berkembang di kelenjar pituitari, yang terletak di dasar otak. Tumor pituitari dapat mempengaruhi produksi hormon dan menyebabkan berbagai gejala tergantung pada jenis hormon yang terlibat.
-#     """)
+        st.image("pituitari.jpg", width=250)
+        st.write("Tumor pituitari merupakan pertumbuhan sel yang tidak normal pada kelenjar pituitari. Kelenjar pituitari adalah kelenjar kecil yang terletak di dalam otak, tepatnya di dasar otak, di belakang rongga hidung. Kelenjar ini menghasilkan berbagai hormon yang memengaruhi banyak kelenjar lain serta mengatur berbagai fungsi penting dalam tubuh. Sebagian besar tumor pituitari bersifat jinak (nonkanker) dan tidak menyebar ke bagian tubuh lainnya. Meskipun demikian, tumor ini dapat menyebabkan kelenjar pituitari menghasilkan hormon dalam jumlah yang terlalu sedikit atau terlalu banyak, sehingga mengganggu keseimbangan hormon dan menimbulkan berbagai masalah pada tubuh. (Sumber: Johns Hopkins Medicine)")
